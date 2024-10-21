@@ -2,14 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatOption, MatSelect } from '@angular/material/select';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-city-selector',
   standalone: true,
-  imports: [MatFormField, MatLabel, MatSelect, MatOption, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [MatSelectModule, FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './city-selector.component.html',
   styleUrl: './city-selector.component.scss'
 })

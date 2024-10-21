@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../../services/weather-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { concatMap, filter, map, Observable } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-weather-report',
   standalone: true,
-  imports: [],
+  imports: [MatCardModule, CommonModule],
   templateUrl: './weather-report.component.html',
   styleUrl: './weather-report.component.scss'
 })
 export class WeatherReportComponent {
+
+  weatherSubscription!: Observable<any>;
+  day!: Date;
   
   constructor(
     private weatherService: WeatherService,
@@ -17,7 +23,15 @@ export class WeatherReportComponent {
   ) {}
 
   ngOnInit() {
-    // Our route params observable
-    this.route.params;
+    this.getDate();
+    this.weatherSubscription = this.route.params.pipe(
+      map((params) =>params['locationName']),
+      filter((name) => !!name),
+      concatMap((name) => this.weatherService.getWeatherForCity(name))
+    );
+  }
+
+  getDate() {
+    this.day = new Date();
   }
 }
