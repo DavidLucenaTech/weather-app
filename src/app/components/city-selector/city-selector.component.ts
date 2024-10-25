@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './city-selector.component.scss'
 })
 export class CitySelectorComponent {
-  cities = ["London", "Barcelona", "Copenhagen", "Rome", "Madrid", "Paris", "New York", "Viena", "Berlin"];
+  cities = ["London", "Barcelona", "Copenhagen", "Rome", "Los Angeles", "Madrid", "New York", "Amsterdam", "Berlin", "Tokio"];
 
   cityControl!: FormControl;
 

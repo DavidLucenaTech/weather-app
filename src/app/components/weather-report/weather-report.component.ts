@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { WeatherService } from '../../services/weather-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { concatMap, filter, map, Observable } from 'rxjs';
@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 })
 export class WeatherReportComponent {
 
+  citySkyline!: string;
+
   weatherSubscription!: Observable<any>;
   day!: Date;
   
@@ -27,6 +29,10 @@ export class WeatherReportComponent {
     this.weatherSubscription = this.route.params.pipe(
       map((params) =>params['locationName']),
       filter((name) => !!name),
+      map((cityName) => {
+        this.citySkyline = '/'+ cityName + '.jpg';
+        return cityName;
+      }),
       concatMap((name) => this.weatherService.getWeatherForCity(name))
     );
   }

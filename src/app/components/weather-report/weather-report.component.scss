@@ -11,11 +11,25 @@
   }
   
   mat-card {
-    width: 250px;
+    width: 350px;
+  }
+
+  mat-card::ng-deep.mat-mdc-card-header {
+    display: block;
   }
   
   mat-card::ng-deep.mat-card-header-text {
     width: 100%;
+  }
+
+  mat-card::ng-deep.mat-mdc-card-actions {
+    display: block;
+  }
+
+  button {
+    background-color: cadetblue;
+    color: white;
+    margin: 4px;
   }
   
   .flex-row {
@@ -56,4 +70,27 @@
     .image {
       height: 80px;
     }
+  }
+
+  .image-container {
+    width: 1000px;
+    height: 500px;
+    overflow: hidden; /* Recorta la imagen si es más grande que el contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd; /* Opcional: agrega un borde */
+    margin-top: 5%;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor sin distorsionarse */
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
