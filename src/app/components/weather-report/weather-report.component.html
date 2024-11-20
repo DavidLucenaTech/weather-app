@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-card class="mat-elevation-z5" *ngIf="weatherSubscription | async as data">
+<div class="container" *ngIf="weatherSubscription | async as data">
+  <mat-card class="mat-elevation-z5">
       <mat-card-header>
         <mat-card-title>{{data.name}}'s weather</mat-card-title>
         <mat-card-subtitle>Today: {{day | date }}</mat-card-subtitle>
